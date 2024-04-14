@@ -1,15 +1,10 @@
 import React from "react";
 
+import { Product } from "@/models/product";
+
 import * as styles from "./ProductListItem.css";
 
-interface ProductListItemProps {
-  productId: number;
-  productThumbnail: string;
-  productName: string;
-  productPrice: number;
-}
-
-const ProductListItem = (props: ProductListItemProps) => {
+const ProductListItem = (props: Product) => {
   const { productId, productThumbnail, productName, productPrice } = props;
 
   return (
