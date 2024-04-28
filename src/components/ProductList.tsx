@@ -1,65 +1,9 @@
 import React from "react";
-import ProductListItem from "./ProductListItem";
+
+import { Product } from "@/models/product";
+import ProductListItem from "@/components/ProductListItem";
 
 import * as styles from "./ProductList.css";
-
-const dummyProducts = [
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName:
-      "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
-    productPrice: 11029384,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName: "상품명",
-    productPrice: 92837456,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName:
-      "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
-    productPrice: 11029384,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName: "상품명",
-    productPrice: 92837456,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName:
-      "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
-    productPrice: 11029384,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName: "상품명",
-    productPrice: 92837456,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName:
-      "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
-    productPrice: 11029384,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName: "상품명",
-    productPrice: 92837456,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName:
-      "상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명상품명",
-    productPrice: 11029384,
-  },
-  {
-    productThumbnail: "https://dummyimage.com/500x700",
-    productName: "상품명",
-    productPrice: 92837456,
-  },
-];
 
 const EmptyState = () => {
   return (
@@ -67,11 +11,14 @@ const EmptyState = () => {
   );
 };
 
-const ProductList = () => {
+const ProductList = (props: { products: Product[] }) => {
+  const { products } = props;
+
   return (
     <div className={styles.container}>
-      {dummyProducts.map((product, index) => (
-        <ProductListItem key={index} productId={index} {...product} />
+      {products.length === 0 && <EmptyState />}
+      {products.map((product, index) => (
+        <ProductListItem {...product} key={index} productId={index} />
       ))}
     </div>
   );
