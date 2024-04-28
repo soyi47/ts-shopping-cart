@@ -1,12 +1,13 @@
 import React from "react";
 
 import * as styles from "./Header.css";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <div className={styles.container}>
       <h1>
-        <a href="">로고</a>
+        <Link href="/">🤑</Link>
       </h1>
       <nav>
         <ul className={styles.navList}>
