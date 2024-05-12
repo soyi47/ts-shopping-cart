@@ -7,7 +7,6 @@ import { Product } from "@/models/product";
 export const getServerSideProps: GetServerSideProps<{
   products: Product[];
 }> = async (ctx) => {
-  const { id } = ctx.query;
   const res = await fetch(API_HOST + "/products");
   const data: { products: Product[] } = await res.json();
   const { products } = data;
@@ -22,9 +21,5 @@ export default function Page(
 ) {
   const { products } = props;
 
-  return (
-    <div>
-      <ProductList products={products} />
-    </div>
-  );
+  return <ProductList products={products} />;
 }
