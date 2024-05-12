@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 import { Product } from "@/models/product";
 
@@ -10,7 +11,7 @@ const ProductListItem = (props: Product) => {
   return (
     <div className={styles.container}>
       <a className={styles.link} href={`products/${productId}`}>
-        <img className={styles.thumbnail} src={productThumbnail} alt="" />
+        <Image className={styles.thumbnail} src={productThumbnail} alt="" />
         <div className={styles.priceText}>
           {productPrice.toLocaleString()}원
         </div>
