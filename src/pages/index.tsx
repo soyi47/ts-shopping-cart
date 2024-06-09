@@ -1,5 +1,25 @@
-import * as styles from "@/styles/common.css";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
-export default function Home() {
-  return <h1 className={styles.textCenter}>Hello, World!</h1>;
+import ProductList from "@/components/ProductList";
+import { API_HOST } from "@/constants/api";
+import { Product } from "@/models/product";
+
+export const getServerSideProps: GetServerSideProps<{
+  products: Product[];
+}> = async (ctx) => {
+  const res = await fetch(API_HOST + "/products");
+  const data: { products: Product[] } = await res.json();
+  const { products } = data;
+
+  return {
+    props: { products },
+  };
+};
+
+export default function Page(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
+  const { products } = props;
+
+  return <ProductList products={products} />;
 }
